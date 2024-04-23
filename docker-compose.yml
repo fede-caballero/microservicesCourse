@@ -4,7 +4,7 @@ services:
   database-service:
     image: "postgres"
     env_file:
-      - ./database_postgres/database.env
+      - ./database_postgres/.env
     volumes:
       - ./database_postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
       - database-data:/var/lib/postgresql/data
@@ -16,7 +16,7 @@ services:
 
   faker-service:
     restart: always
-    build: ./faker
+    build: ./faker/faker-service
     volumes: 
       - ./faker:/usr/src/app
     ports:
